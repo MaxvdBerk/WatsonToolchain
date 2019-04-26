@@ -67,7 +67,7 @@ services:
       ui-pipeline: true
       configuration:
         content:
-          $text: pipeline.yml
+          $text: Mongo-Server.pipeline.yml
         env:
           MONGO_SERVER_REPO: Mongo-Server-repo
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
