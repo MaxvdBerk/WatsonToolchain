@@ -44,7 +44,7 @@ services:
           $text: front.pipeline.yml
         env:
           FRONT_REPO: front-repo
-          CF_APP_NAME: '{{form.pipeline.parameters.front-app-name}}'
+          CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
@@ -70,7 +70,7 @@ services:
           $text: Mongo-Server.pipeline.yml
         env:
           MONGO_SERVER_REPO: Mongo-Server-repo
-          CF_APP_NAME: '{{form.pipeline.parameters.mongo-app-name}}'
+          CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
           PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
@@ -79,8 +79,7 @@ services:
 form:
   pipeline:
     parameters:
-      mongo-app-name: '{{services.Mongo-Server-repo.parameters.repo_name}}'
-      front-app-name: '{{services.front-repo.parameters.repo_name}}'
+      prod-app-name: '{{toolchain.name}}'
     schema:
       $ref: deploy.json
 
