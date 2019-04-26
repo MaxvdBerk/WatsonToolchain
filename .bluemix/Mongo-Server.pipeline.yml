@@ -4,7 +4,7 @@ stages:
   inputs:
   - type: git
     branch: master
-    service: ${Mongo-Server_REPO}
+    service: ${MONGO-SERVER_REPO}
   triggers:
   - type: commit
   jobs:
@@ -25,7 +25,7 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Server Deploy
+  - name: Blue-Green Deploy
     type: deployer
     target:
       region_id: ${PROD_REGION_ID}

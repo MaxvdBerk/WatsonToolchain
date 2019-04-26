@@ -19,7 +19,7 @@ template:
     git branch: >-
       [master](https://github.com/MaxvdBerk/WatsonToolchain/tree/master)
 toolchain:
-  name: 'TalentLaunch2019-{{timestamp}}'
+  name: 'watson-{{timestamp}}'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
@@ -43,7 +43,7 @@ services:
         content:
           $text: front.pipeline.yml
         env:
-          front_REPO: front-repo
+          FRONT_REPO: front-repo
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
@@ -69,7 +69,7 @@ services:
         content:
           $text: Mongo-Server.pipeline.yml
         env:
-          Mongo-Server_REPO: Mongo-Server-repo
+          MONGO_SERVER_REPO: Mongo-Server-repo
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
