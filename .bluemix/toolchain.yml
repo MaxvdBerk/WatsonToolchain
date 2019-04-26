@@ -9,8 +9,10 @@ template:
   header: '![](toolchain.svg?localize)'
   icon: icon.svg
   required:
-    - sample-build
-    - sample-repo
+    - front-build
+    - front-repo
+    - Mongo-Server-build
+    - Mongo-Server-repo
   info:
     git url: >-
       [https://github.com/MaxvdBerk/WatsonToolchain](https://github.com/MaxvdBerk/WatsonToolchain)
@@ -22,7 +24,7 @@ toolchain:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
 services:
-  sample-repo:
+  front-repo:
     service_id: githubpublic
     parameters:
       repo_name: '{{toolchain.name}}'
@@ -30,18 +32,44 @@ services:
       type: clone
       has_issues: true
       enable_traceability: true
-  sample-build:
+  front-build:
     service_id: pipeline
     parameters:
       services:
-        - sample-repo
-      name: '{{services.sample-repo.parameters.repo_name}}'
+        - front-repo
+      name: '{{services.front-repo.parameters.repo_name}}'
+      ui-pipeline: true
+      configuration:
+        content:
+          $text: front.pipeline.yml
+        env:
+          front_REPO: front-repo
+          CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
+          PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
+          PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
+          PROD_REGION_ID: '{{form.pipeline.parameters.prod-region}}'
+          API_KEY: '{{form.pipeline.parameters.api-key}}'
+        execute: true
+  Mongo-Server-repo:
+    service_id: githubpublic
+    parameters:
+      repo_name: '{{toolchain.name}}'
+      repo_url: 'https://github.com/BDelleman/ServerMongo'
+      type: clone
+      has_issues: true
+      enable_traceability: true
+  Mongo-Server-build:
+    service_id: pipeline
+    parameters:
+      services:
+        - Mongo-Server-repo
+      name: '{{services.Mongo-Server-repo.parameters.repo_name}}'
       ui-pipeline: true
       configuration:
         content:
           $text: pipeline.yml
         env:
-          SAMPLE_REPO: sample-repo
+          Mongo-Server_REPO: Mongo-Server-repo
           CF_APP_NAME: '{{form.pipeline.parameters.prod-app-name}}'
           PROD_SPACE_NAME: '{{form.pipeline.parameters.prod-space}}'
           PROD_ORG_NAME: '{{form.pipeline.parameters.prod-organization}}'
@@ -51,6 +79,7 @@ services:
 form:
   pipeline:
     parameters:
-      prod-app-name: '{{services.sample-repo.parameters.repo_name}}'
+      prod-app-name: '{{services.Mongo-Server-repo.parameters.repo_name}}'
     schema:
       $ref: deploy.json
+
