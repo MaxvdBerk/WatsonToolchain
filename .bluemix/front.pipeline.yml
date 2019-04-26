@@ -4,7 +4,7 @@ stages:
   inputs:
   - type: git
     branch: master
-    service: ${front_REPO}
+    service: ${FRONT_REPO}
   triggers:
   - type: commit
   jobs:
@@ -25,7 +25,7 @@ stages:
     value: undefined
     type: text
   jobs:
-  - name: Front Deploy
+  - name: Blue-Green Deploy
     type: deployer
     target:
       region_id: ${PROD_REGION_ID}

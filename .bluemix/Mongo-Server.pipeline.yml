@@ -4,7 +4,7 @@ stages:
   inputs:
   - type: git
     branch: master
-    service: ${MONGO-SERVER_REPO}
+    service: ${MONGO_SERVER_REPO}
   triggers:
   - type: commit
   jobs:
