@@ -19,7 +19,7 @@ template:
     git branch: >-
       [master](https://github.com/MaxvdBerk/WatsonToolchain/tree/master)
 toolchain:
-  name: 'watson-front-{{timestamp}}'
+  name: 'TalentLaunch2019-{{timestamp}}'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
