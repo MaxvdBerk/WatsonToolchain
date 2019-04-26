@@ -82,7 +82,7 @@ services:
     service_id: githubpublic
     parameters:
       repo_name: 'Mongo-API-{{toolchain.name}}'
-      repo_url: 'https://github.com/BDelleman/APIMongo'
+      repo_url: 'https://github.com/BDelleman/MongoAPI'
       type: clone
       has_issues: true
       enable_traceability: true
