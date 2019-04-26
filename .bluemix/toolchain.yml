@@ -27,7 +27,7 @@ services:
   front-repo:
     service_id: githubpublic
     parameters:
-      repo_name: '{{toolchain.name}}'
+      repo_name: 'front-{{toolchain.name}}'
       repo_url: 'https://github.com/BDelleman/Front'
       type: clone
       has_issues: true
@@ -53,7 +53,7 @@ services:
   Mongo-Server-repo:
     service_id: githubpublic
     parameters:
-      repo_name: '{{toolchain.name}}'
+      repo_name: 'Mongo-Server-{{toolchain.name}}'
       repo_url: 'https://github.com/BDelleman/ServerMongo'
       type: clone
       has_issues: true
