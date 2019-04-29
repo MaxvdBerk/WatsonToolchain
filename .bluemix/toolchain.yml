@@ -111,6 +111,9 @@ form:
   pipeline:
     parameters:
       prod-app-name: '{{toolchain.name}}'
+      prod-space: 'dev'
+      prod-organization: 'bluemixdev@virtualsciences.nl'
+      prod-region: 'London'
     schema:
       $ref: deploy.json
 
