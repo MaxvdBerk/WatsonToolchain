@@ -21,7 +21,7 @@ template:
     git branch: >-
       [master](https://github.com/MaxvdBerk/WatsonToolchain/tree/master)
 toolchain:
-  name: 'watson-{{timestamp}}'
+  name: 'watson'
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
