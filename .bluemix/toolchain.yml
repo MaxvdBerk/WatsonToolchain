@@ -21,7 +21,7 @@ template:
     git branch: >-
       [master](https://github.com/MaxvdBerk/WatsonToolchain/tree/master)
 toolchain:
-  name: 'watson'
+  name: 'watson' #add '-{{timestamp}}' for multiple horizontal deployment
   template:
     getting_started:
       $ref: "#/messages/template.gettingStarted"
